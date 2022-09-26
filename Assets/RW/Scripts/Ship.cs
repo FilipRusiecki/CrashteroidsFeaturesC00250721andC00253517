@@ -84,7 +84,7 @@ public class Ship : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             boostRight();
-            resetPos();
+   
         }
 
 
