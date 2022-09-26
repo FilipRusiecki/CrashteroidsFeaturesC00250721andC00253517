@@ -119,7 +119,7 @@ public class TestSuite
         Assert.AreEqual(game.score, 0);
     }
 
-
+    //Filips tests
     [UnityTest]
     public IEnumerator CheckBoostRight()
     {
@@ -136,7 +136,7 @@ public class TestSuite
         //Assert.Less(initialXpos2, game.GetShip().transform.position.x);
         Assert.Greater(initialXpos2, initialXpos);
     }
-    //Filips tests
+   
     [UnityTest]
     public IEnumerator CheckBoostLeft()
     {
