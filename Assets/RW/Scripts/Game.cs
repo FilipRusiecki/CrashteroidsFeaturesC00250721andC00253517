@@ -99,6 +99,7 @@ public class Game : MonoBehaviour
         return shipModel.GetComponent<Ship>();
     }
 
+
     public Spawner GetSpawner()
     {
         return spawner.GetComponent<Spawner>();

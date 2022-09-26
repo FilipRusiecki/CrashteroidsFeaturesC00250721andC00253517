@@ -97,7 +97,7 @@ public class TestSuite
         game.GetShip().MoveLeft();
         yield return new WaitForSeconds(0.1f);
 
-        Assert.Greater(initialXpos, game.GetShip().transform.position.y);
+        Assert.Greater(initialXpos, game.GetShip().transform.position.x);
     }
 
     [UnityTest]
@@ -108,7 +108,7 @@ public class TestSuite
         game.GetShip().MoveRight();
         yield return new WaitForSeconds(0.1f);
 
-        Assert.Greater(initialXpos, game.GetShip().transform.position.y);
+        Assert.Less(initialXpos, game.GetShip().transform.position.x);
     }
 
     [UnityTest]
@@ -117,5 +117,39 @@ public class TestSuite
         game.NewGame();
         yield return new WaitForSeconds(0.1f);
         Assert.AreEqual(game.score, 0);
+    }
+
+
+    [UnityTest]
+    public IEnumerator CheckBoostRight()
+    {
+        float initialXpos = game.GetShip().transform.position.x;
+        game.GetShip().MoveRight();
+        yield return new WaitForSeconds(0.1f);
+        //Assert.Less(initialXpos, game.GetShip().transform.position.x);
+        game.GetShip().resetPos();
+
+
+        game.GetShip().boostRight();
+        float initialXpos2 = game.GetShip().transform.position.x;
+        yield return new WaitForSeconds(0.1f);
+        //Assert.Less(initialXpos2, game.GetShip().transform.position.x);
+        Assert.Greater(initialXpos2, initialXpos);
+    }
+
+    [UnityTest]
+    public IEnumerator CheckBoostLeft()
+    {
+        float initialXpos = game.GetShip().transform.position.x;
+        game.GetShip().MoveLeft();
+        yield return new WaitForSeconds(0.1f);
+
+        game.GetShip().resetPos();
+
+        game.GetShip().boostLeft();
+        float initialXpos2 = game.GetShip().transform.position.x;
+        yield return new WaitForSeconds(0.1f);
+  
+        Assert.Less(initialXpos2, initialXpos);
     }
 }

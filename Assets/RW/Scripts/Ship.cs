@@ -71,6 +71,16 @@ public class Ship : MonoBehaviour
         {
             MoveRight();
         }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            boostLeft();
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            boostRight();
+            resetPos();
+        }
     }
 
     public void ShootLaser()
@@ -124,5 +134,26 @@ public class Ship : MonoBehaviour
         explosion.SetActive(false);
         mesh.enabled = true;
         isDead = false;
+    }
+
+    public void boostRight()
+    {
+        transform.Translate(-Vector3.right * Time.deltaTime * speed * 2);
+        if (transform.position.x > maxRight)
+        {
+            transform.position = new Vector3(maxRight, -3.22f, 0);
+        }
+    }
+
+    public void boostLeft()
+    {
+        transform.Translate(-Vector3.left * Time.deltaTime * speed * 2);
+        if (transform.position.x < maxLeft)
+        {
+            transform.position = new Vector3(maxLeft, -3.22f, 0);
+        }
+    }
+    public void resetPos() {
+        transform.position = new Vector3(0, -3.22f, 0);
     }
 }
