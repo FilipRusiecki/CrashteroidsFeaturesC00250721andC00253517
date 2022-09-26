@@ -149,9 +149,9 @@ public class TestSuite
         game.GetShip().boostLeft();
         float initialXpos2 = game.GetShip().transform.position.x;
         yield return new WaitForSeconds(0.1f);
-  
-        Assert.Less(initialXpos2, initialXpos);
 
+        Assert.Less(initialXpos2, initialXpos);
+    }
     [UnityTest]
     public IEnumerator UpMovementWorks()
     {
