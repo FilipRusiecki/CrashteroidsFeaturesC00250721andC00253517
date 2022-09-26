@@ -51,7 +51,14 @@ public class Game : MonoBehaviour
     [SerializeField]
     private Spawner spawner;
 
+
+    public GameObject shieldPickup;
+    public Transform shieldLocation;
+    public bool shieldAlive = false;
+
+
     private static Game instance;
+
 
     private void Start()
     {
@@ -60,6 +67,8 @@ public class Game : MonoBehaviour
         gameOverText.enabled = false;
         scoreText.enabled = false;
         startGameButton.SetActive(true);
+      
+        spawnShield();
     }
 
     public static void GameOver()
@@ -103,5 +112,11 @@ public class Game : MonoBehaviour
     public Spawner GetSpawner()
     {
         return spawner.GetComponent<Spawner>();
+    }
+
+    public void spawnShield()
+    {
+        shieldAlive = true;
+        Instantiate(shieldPickup, shieldLocation.position, shieldLocation.rotation);
     }
 }

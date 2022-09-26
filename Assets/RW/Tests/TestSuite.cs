@@ -136,7 +136,7 @@ public class TestSuite
         //Assert.Less(initialXpos2, game.GetShip().transform.position.x);
         Assert.Greater(initialXpos2, initialXpos);
     }
-   
+
     [UnityTest]
     public IEnumerator CheckBoostLeft()
     {
@@ -174,4 +174,15 @@ public class TestSuite
         Assert.Greater(initialYpos, game.GetShip().transform.position.y);
 
     }
+
+    [UnityTest]
+    public IEnumerator SpawnInShieldOnScreen()
+    {
+        game.spawnShield();
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.True(game.shieldAlive);
+
+    }
+
 }
