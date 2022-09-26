@@ -49,6 +49,10 @@ public class Ship : MonoBehaviour
 
     private float maxLeft = -8;
     private float maxRight = 8;
+    private float maxTop = 5;
+    private float maxBottom = -3.5f;
+
+    //Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
 
     private void Update()
     {
@@ -71,6 +75,18 @@ public class Ship : MonoBehaviour
         {
             MoveRight();
         }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            MoveUp();
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            MoveDown();
+        }
+
+        //checking();
     }
 
     public void ShootLaser()
@@ -99,7 +115,7 @@ public class Ship : MonoBehaviour
         transform.Translate(-Vector3.left * Time.deltaTime * speed);
         if (transform.position.x < maxLeft)
         {
-            transform.position = new Vector3(maxLeft, -3.22f, 0);
+            transform.position = new Vector3(maxLeft, transform.position.y, 0);
         }
     }
 
@@ -108,7 +124,25 @@ public class Ship : MonoBehaviour
         transform.Translate(-Vector3.right * Time.deltaTime * speed);
         if (transform.position.x > maxRight)
         {
-             transform.position = new Vector3(maxRight, -3.22f, 0);
+             transform.position = new Vector3(maxRight, transform.position.y, 0);
+        }
+    }
+
+    public void MoveUp()
+    {
+        transform.Translate(-Vector3.forward * Time.deltaTime * speed);
+        if (transform.position.y > maxTop)
+        {
+            transform.position = new Vector3(transform.position.x, maxTop, 0);
+        }
+    }
+
+    public void MoveDown()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        if (transform.position.y < maxBottom)
+        {
+            transform.position = new Vector3(transform.position.x, maxBottom, 0);
         }
     }
 
@@ -125,4 +159,16 @@ public class Ship : MonoBehaviour
         mesh.enabled = true;
         isDead = false;
     }
+
+    //void checking()
+    //{
+    //    if (screenPos.y < 0) Debug.Log("Below screen");
+    //    else if (screenPos.y > Screen.height) Debug.Log("Above screen");
+
+    //    if (screenPos.x < 0) Debug.Log("Left of screen");
+    //    else if (screenPos.x > Screen.width) Debug.Log("Right of screen");
+    //}
+   
+
+
 }

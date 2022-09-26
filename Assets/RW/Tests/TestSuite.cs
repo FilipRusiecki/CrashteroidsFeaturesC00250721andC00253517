@@ -118,4 +118,24 @@ public class TestSuite
         yield return new WaitForSeconds(0.1f);
         Assert.AreEqual(game.score, 0);
     }
+
+    [UnityTest]
+    public IEnumerator UpMovementWorks()
+    {
+        float initialYpos = game.GetShip().transform.position.y;
+        game.GetShip().MoveUp();
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.Less(initialYpos, game.GetShip().transform.position.y);
+    }
+
+    [UnityTest]
+    public IEnumerator DownMovementWorks()
+    {
+        float initialYpos = game.GetShip().transform.position.y;
+        game.GetShip().MoveDown();
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.Greater(initialYpos, game.GetShip().transform.position.y);
+    }
 }
