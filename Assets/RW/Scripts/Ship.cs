@@ -115,7 +115,7 @@ public class Ship : MonoBehaviour
         transform.Translate(-Vector3.left * Time.deltaTime * speed);
         if (transform.position.x < maxLeft)
         {
-            transform.position = new Vector3(maxLeft, transform.position.y, 0);
+            transform.position = new Vector3(maxRight, transform.position.y, 0);
         }
     }
 
@@ -124,7 +124,7 @@ public class Ship : MonoBehaviour
         transform.Translate(-Vector3.right * Time.deltaTime * speed);
         if (transform.position.x > maxRight)
         {
-             transform.position = new Vector3(maxRight, transform.position.y, 0);
+             transform.position = new Vector3(maxLeft, transform.position.y, 0);
         }
     }
 
