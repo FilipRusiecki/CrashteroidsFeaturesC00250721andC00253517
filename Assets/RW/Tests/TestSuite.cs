@@ -136,7 +136,7 @@ public class TestSuite
         //Assert.Less(initialXpos2, game.GetShip().transform.position.x);
         Assert.Greater(initialXpos2, initialXpos);
     }
-
+    //Filips tests
     [UnityTest]
     public IEnumerator CheckBoostLeft()
     {
@@ -152,6 +152,8 @@ public class TestSuite
 
         Assert.Less(initialXpos2, initialXpos);
     }
+
+    //Danials tests
     [UnityTest]
     public IEnumerator UpMovementWorks()
     {
