@@ -59,6 +59,10 @@ public class Game : MonoBehaviour
 
     private static Game instance;
 
+    public float timer = 10.0f;
+
+    private GameObject shieldCopy;
+
 
     private void Start()
     {
@@ -117,6 +121,20 @@ public class Game : MonoBehaviour
     public void spawnShield()
     {
         shieldAlive = true;
-        Instantiate(shieldPickup, shieldLocation.position, shieldLocation.rotation);
+        shieldCopy = Instantiate(shieldPickup, shieldLocation.position, shieldLocation.rotation);
+    }
+
+    void Update()
+    {
+        timer -= Time.deltaTime;
+
+        Debug.Log(timer);
+
+        if (timer < 0)
+        {
+            timer = 0;
+            shieldAlive = false;
+            DestroyImmediate(shieldCopy, true);
+        }
     }
 }

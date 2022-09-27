@@ -185,4 +185,14 @@ public class TestSuite
 
     }
 
+    [UnityTest]
+    public IEnumerator DespawnShieldOnScreen()
+    {
+        game.spawnShield();
+        yield return new WaitForSeconds(10.0f);
+
+        Assert.False(game.shieldAlive);
+
+    }
+
 }
