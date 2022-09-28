@@ -52,6 +52,8 @@ public class Ship : MonoBehaviour
     private float maxTop = 5;
     private float maxBottom = -3.5f;
 
+    bool haveShield = false;
+
     //Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
 
     private void Update()
@@ -191,20 +193,21 @@ public class Ship : MonoBehaviour
             transform.position = new Vector3(maxRight, transform.position.y, 0);
         }
     }
-    public void resetPos() {
+
+    public void resetPos()
+    {
         transform.position = new Vector3(0, -3.22f, 0);
     }
 
-    //void checking()
-    //{
-    //    if (screenPos.y < 0) Debug.Log("Below screen");
-    //    else if (screenPos.y > Screen.height) Debug.Log("Above screen");
-
-    //    if (screenPos.x < 0) Debug.Log("Left of screen");
-    //    else if (screenPos.x > Screen.width) Debug.Log("Right of screen");
-    //}
-   
-
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("Shield"))
+        {
+            haveShield = true;
+            Debug.Log("Get shield");
+        }
+    }
+ 
 
 
 }

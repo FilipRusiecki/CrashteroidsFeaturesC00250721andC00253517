@@ -182,7 +182,6 @@ public class TestSuite
         yield return new WaitForSeconds(0.1f);
 
         Assert.True(game.shieldAlive);
-
     }
 
     [UnityTest]
@@ -192,7 +191,6 @@ public class TestSuite
         yield return new WaitForSeconds(10.0f);
 
         Assert.False(game.shieldAlive);
-
     }
 
 }

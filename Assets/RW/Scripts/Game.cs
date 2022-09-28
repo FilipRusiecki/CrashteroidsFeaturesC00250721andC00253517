@@ -128,8 +128,6 @@ public class Game : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        Debug.Log(timer);
-
         if (timer < 0)
         {
             timer = 0;
