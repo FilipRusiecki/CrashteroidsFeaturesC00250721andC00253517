@@ -193,4 +193,15 @@ public class TestSuite
         Assert.False(game.shieldAlive);
     }
 
+    [UnityTest]
+    public IEnumerator PlayerCollideWithPickUp()
+    {
+        game.spawnShield();
+
+        bool shieldStatus = game.GetShip().GetShieldStatus();
+
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.True(shieldStatus);
+    }
 }

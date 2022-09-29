@@ -208,6 +208,9 @@ public class Ship : MonoBehaviour
         }
     }
  
-
+    public bool GetShieldStatus()
+    {
+        return haveShield;
+    }
 
 }
