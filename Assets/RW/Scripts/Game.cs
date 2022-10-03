@@ -41,6 +41,10 @@ public class Game : MonoBehaviour
     [SerializeField]
     private GameObject shipModel;
     [SerializeField]
+    private GameObject allyModelRight;
+    [SerializeField]
+    private GameObject allyModelLeft;
+    [SerializeField]
     private GameObject startGameButton;
     [SerializeField]
     private Text gameOverText;
@@ -68,8 +72,18 @@ public class Game : MonoBehaviour
         instance.startGameButton.SetActive(true);
         instance.isGameOver = true;
         instance.spawner.StopSpawning();
+
         instance.shipModel.GetComponent<Ship>().Explode();
+        instance.allyModelRight.GetComponent<AllyShip>().Explode();
+        instance.allyModelLeft.GetComponent<AllyShip>().Explode();
+
         instance.gameOverText.enabled = true;
+    }
+
+    public static void DestroyAllyShip()
+    {
+        instance.allyModelRight.GetComponent<AllyShip>().Explode();
+        instance.allyModelLeft.GetComponent<AllyShip>().Explode();
     }
 
     public void NewGame()
@@ -79,11 +93,19 @@ public class Game : MonoBehaviour
         startGameButton.SetActive(false);
         shipModel.transform.position = new Vector3(0, -3.22f, 0);
         shipModel.transform.eulerAngles = new Vector3(90, 180, 0);
+        allyModelRight.transform.position = new Vector3(3, -3.22f, 0);
+        allyModelRight.transform.eulerAngles = new Vector3(90, 180, 0);
+        allyModelLeft.transform.position = new Vector3(-3, -3.22f, 0);
+        allyModelLeft.transform.eulerAngles = new Vector3(90, 180, 0);
         score = 0;
         scoreText.text = "Score: " + score;
         scoreText.enabled = true;
         spawner.BeginSpawning();
+
         shipModel.GetComponent<Ship>().RepairShip();
+        allyModelRight.GetComponent<AllyShip>().RepairShip();
+        allyModelLeft.GetComponent<AllyShip>().RepairShip();
+
         spawner.ClearAsteroids();
         gameOverText.enabled = false;
     }

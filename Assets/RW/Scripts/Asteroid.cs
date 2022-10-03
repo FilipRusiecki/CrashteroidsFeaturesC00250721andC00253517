@@ -58,5 +58,10 @@ public class Asteroid : MonoBehaviour
             Game.GameOver();
             Destroy(gameObject);
         }
+        if (collision.gameObject.name == "AllyShipModel")
+        {
+            Game.DestroyAllyShip();
+            Destroy(gameObject);
+        }
     }
 }
